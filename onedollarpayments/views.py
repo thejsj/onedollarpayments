@@ -138,10 +138,6 @@ def recepient_pay_request(request, payment_request_hash ):
             })
 
         else: 
-            if recepient_form.is_valid() and not stripe_token_form.is_valid():
-                raise Exception("Recepeint fomr is valide")
-            if not recepient_form.is_valid() and stripe_token_form.is_valid():
-                raise Exception("Stripe Token fomr is valide")
             return render(request, 'payment-request-error.html')
 
     payment_request = get_object_or_404( Request, pk=payment_request_hash )
