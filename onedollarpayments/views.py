@@ -101,11 +101,33 @@ def recepient_pay_request(request, payment_request_hash ):
             # Stripe Stuff
             stripe.api_key = "sk_test_0KVbveRNHYURQQbsqBWMWgFL"
 
+            # Check For Stripe
             stripe_charge = stripe.Charge.create(
                 amount=int(payment_request.quantity * 100),
                 currency="usd",
                 card=payment_request.recepient.stripe_token.stripe_id, # obtained with Stripe.js
                 description="Charge for %s" % ( payment_request.sender.email )
+            )
+
+            send_mail(
+                'Payment Succesful!', 
+                'Your Payment to %s has been succseful.' % (
+                    request_form.sender.email, 
+                ), 
+                payment_request.recepient.email,
+                [payment_request.recepient.email], 
+                fail_silently=False
+            )
+
+            send_mail(
+                'Payment Received!', 
+                '%s has completed your payment request for %s. Now go spend those dolla billz!' % (
+                    request_form.recepient.email, 
+                    request_form.quantity, 
+                ), 
+                payment_request.sender.email,
+                [payment_request.sender.email], 
+                fail_silently=False
             )
             
             return render(request, 'payment-request-confirmation.html', {
