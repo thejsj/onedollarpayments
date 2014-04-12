@@ -92,3 +92,8 @@ EMAIL_HOST_USER = 'jorge.silva@thejsj.com'
 EMAIL_HOST_PASSWORD = 'tMpO3PlvhJE6mrFBWK1KzA'
 DEFAULT_FROM_EMAIL = 'jorge.silva@thejsj.com'
 SERVER_EMAIL = 'jorge.silva@thejsj.com'
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
