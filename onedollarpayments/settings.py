@@ -59,9 +59,9 @@ WSGI_APPLICATION = 'onedollarpayments.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'onedollarpayments',
-        'USER': 'onedollarpayments',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'onedollarpay',
+        'USER': 'onedollarpay',
         'PASSWORD': 'rDE9wPjAHkEt7nsxdmb33nQrt',
     }
 }
@@ -85,7 +85,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/home/thejsj/webapps/onedollarpayments_static'
+STATIC_ROOT = '/home/thejsj/webapps/onedollarpayments_static/'
 
 EMAIL_HOST = 'smtp.mandrillapp.com'
 EMAIL_HOST_USER = 'jorge.silva@thejsj.com'
