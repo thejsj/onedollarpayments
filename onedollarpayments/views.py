@@ -112,7 +112,7 @@ def recepient_pay_request(request, payment_request_hash ):
             send_mail(
                 'Payment Succesful!', 
                 'Your Payment to %s has been succseful.' % (
-                    request_form.sender.email, 
+                    payment_request.sender.email, 
                 ), 
                 payment_request.recepient.email,
                 [payment_request.recepient.email], 
@@ -122,8 +122,8 @@ def recepient_pay_request(request, payment_request_hash ):
             send_mail(
                 'Payment Received!', 
                 '%s has completed your payment request for %s. Now go spend those dolla billz!' % (
-                    request_form.recepient.email, 
-                    request_form.quantity, 
+                    payment_request.recepient.email, 
+                    payment_request.quantity, 
                 ), 
                 payment_request.sender.email,
                 [payment_request.sender.email], 
