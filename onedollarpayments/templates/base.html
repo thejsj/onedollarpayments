@@ -1,0 +1,36 @@
+<!doctype html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{% block title %}One Dollar Payments{% endblock %}</title>
+		<link rel="stylesheet" href="/static/css/app.css" />
+		<script src="static/bower_components/modernizr/modernizr.js"></script>
+		<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+		<script type="text/javascript" src="/static/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/static/js/onedollarpayments.js"></script>
+	</head>
+	<body>
+		<div class="page-content">
+
+			<header id="header" class="row">
+			  <div class="large-6 large-centered columns">
+			    <h2>One Dollar Payments</h2>
+			    <p>The easy way to send anyone money. Quick and Easy.</p>
+			  </div>
+			</header>
+
+			<div class="main-content">
+				{% block content %}{% endblock %}
+			</div>
+
+			<footer id="footer" class="row">
+				<div class="large-6 large-centered columns">
+					<p>RVA Hackathon 2014</p>
+					<p>Jorge Silva</p>
+				</div>
+			</footer>
+
+		</div>
+	</body>
+</html>

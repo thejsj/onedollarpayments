@@ -13,7 +13,7 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('created_at', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now)),
             ('email', self.gf('django.db.models.fields.EmailField')(max_length=75)),
-            ('stripe_toke', self.gf('django.db.models.fields.CharField')(max_length=255)),
+            ('stripe_token', self.gf('django.db.models.fields.CharField')(max_length=255)),
         ))
         db.send_create_signal(u'onedollarpayments', ['Recepient'])
 
@@ -22,7 +22,8 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('created_at', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now)),
             ('email', self.gf('django.db.models.fields.EmailField')(max_length=75)),
-            ('stripe_toke', self.gf('django.db.models.fields.CharField')(max_length=255)),
+            ('bank_routing_number', self.gf('django.db.models.fields.IntegerField')(default=None)),
+            ('bank_account_number', self.gf('django.db.models.fields.IntegerField')(default=None)),
         ))
         db.send_create_signal(u'onedollarpayments', ['Sender'])
 
@@ -32,7 +33,6 @@ class Migration(SchemaMigration):
             ('created_at', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now)),
             ('recepient', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['onedollarpayments.Recepient'])),
             ('sender', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['onedollarpayments.Sender'])),
-            ('stripe_toke', self.gf('django.db.models.fields.CharField')(max_length=255)),
         ))
         db.send_create_signal(u'onedollarpayments', ['Request'])
 
@@ -54,22 +54,22 @@ class Migration(SchemaMigration):
             'created_at': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
             'email': ('django.db.models.fields.EmailField', [], {'max_length': '75'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'stripe_toke': ('django.db.models.fields.CharField', [], {'max_length': '255'})
+            'stripe_token': ('django.db.models.fields.CharField', [], {'max_length': '255'})
         },
         u'onedollarpayments.request': {
             'Meta': {'object_name': 'Request'},
             'created_at': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'recepient': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['onedollarpayments.Recepient']"}),
-            'sender': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['onedollarpayments.Sender']"}),
-            'stripe_toke': ('django.db.models.fields.CharField', [], {'max_length': '255'})
+            'sender': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['onedollarpayments.Sender']"})
         },
         u'onedollarpayments.sender': {
             'Meta': {'object_name': 'Sender'},
+            'bank_account_number': ('django.db.models.fields.IntegerField', [], {'default': 'None'}),
+            'bank_routing_number': ('django.db.models.fields.IntegerField', [], {'default': 'None'}),
             'created_at': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
             'email': ('django.db.models.fields.EmailField', [], {'max_length': '75'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'stripe_toke': ('django.db.models.fields.CharField', [], {'max_length': '255'})
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
         }
     }
 

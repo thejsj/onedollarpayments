@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Request A Payment | {{ block.super }}{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="large-6 large-centered columns">
+
+			<h1>Request a Payment</h1>
+			<form id="main-request-form" action="{% url 'home' %}" method="post">
+				{% csrf_token %}
+				{{ sender_form }}
+				{{ recepient_form }}
+				{{ request_form }}
+
+				<p><small>Test Account: 124003116 / 1024758706</small></p>
+
+				<input type="submit" class="button" value="Submit" />
+			</form>
+		</div>
+	</div>
+{% endblock %}

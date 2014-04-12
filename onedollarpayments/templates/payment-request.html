@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Pay Up! | {{ block.super }}{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="large-6 large-centered columns">
+			<h1>Pay Up!</h1>
+			<p>Order #: {{ payment_request.id }}</p>
+			<p>{{ payment_request.sender.email }} is asking for {{ payment_request.quantity }}</p>
+			<p>Enter your credit card information in order to complete payment</p>
+
+			<form id="main-payment-request-form" action="{% url 'recepient_pay_request' payment_request_hash=payment_request.id %}" method="post">
+				{% csrf_token %}
+				{{ recepient_form }}
+				<br>
+				{{ stripe_token_form }}
+				<p><small>Test Credentials: 4242424242424242</small></p>
+				<input type="hidden" value="{{ payment_request.id }}">
+				<input type="submit" value="Submit" />
+			</form>
+		</div>
+	</div>
+
+{% endblock %}

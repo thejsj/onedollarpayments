@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Payment Confirmation | {{ block.super }}{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="large-6 large-centered columns">
+			<h1>Payment Succsesful</h1>
+			<p>Order #: {{ payment_request.id }}</p>
+			<p>Your payment to {{ payment_request.sender.email }} for {{ payment_request.quantity }} was successful.</p>
+		</div>
+	</div>
+{% endblock %}

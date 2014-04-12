@@ -2,6 +2,25 @@ from django.conf import settings
 from django.db import models
 from datetime import datetime
 
+class StripeToken(models.Model):
+
+    stripe_id = models.CharField(
+        max_length=255
+    )
+
+    livemode = models.BooleanField(
+        default=False
+    )
+
+    created = models.IntegerField(
+        default=None,
+        blank=True,
+    )
+
+    used = models.BooleanField(
+        default=False,
+    )
+
 class Recepient(models.Model):
 
     created_at = models.DateTimeField(
@@ -11,9 +30,7 @@ class Recepient(models.Model):
 
     email = models.EmailField()
 
-    stripe_toke = models.CharField(
-    	max_length=255
-    )
+    stripe_token = models.ForeignKey('StripeToken')
 
 class Sender(models.Model):
 
@@ -24,8 +41,12 @@ class Sender(models.Model):
 
     email = models.EmailField()
 
-    stripe_toke = models.CharField(
-    	max_length=255
+    bank_routing_number = models.IntegerField(
+        default=None
+    )
+
+    bank_account_number = models.IntegerField(
+        default=None
     )
 
 class Request(models.Model):
@@ -39,6 +60,12 @@ class Request(models.Model):
 
     sender = models.ForeignKey('Sender')
 
-    stripe_toke = models.CharField(
-    	max_length=255
+    quantity = models.DecimalField(
+        max_digits=65, 
+        decimal_places=2,
+        default=0.00
+    )
+
+    paid = models.BooleanField(
+        default=None
     )
