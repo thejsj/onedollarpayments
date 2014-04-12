@@ -50,7 +50,7 @@ class PaymentRecepientForm(forms.ModelForm):
         fields = ['email', 'number', 'cvc', 'exp_month', 'exp_year']
 
     def __init__(self, *args, **kwargs):
-        super(RequestPaymentRequestForm, self).__init__(*args, **kwargs)
+        super(PaymentRecepientForm, self).__init__(*args, **kwargs)
         self.fields['email'].label = "Confirm Your Email"
         self.fields['number'].label = "Credid Card Number"
         self.fields['cvc'].label = "CVC"
