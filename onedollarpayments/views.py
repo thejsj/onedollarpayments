@@ -137,9 +137,6 @@ def recepient_pay_request(request, payment_request_hash ):
                 'stripe_charge': stripe_charge,
             })
 
-        else: 
-            return render(request, 'payment-request-error.html')
-
     payment_request = get_object_or_404( Request, pk=payment_request_hash )
 
     # Initalize our two forms here with separate prefixes
