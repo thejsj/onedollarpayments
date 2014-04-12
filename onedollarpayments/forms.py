@@ -49,6 +49,14 @@ class PaymentRecepientForm(forms.ModelForm):
         model = Recepient
         fields = ['email', 'number', 'cvc', 'exp_month', 'exp_year']
 
+    def __init__(self, *args, **kwargs):
+        super(RequestPaymentRequestForm, self).__init__(*args, **kwargs)
+        self.fields['email'].label = "Confirm Your Email"
+        self.fields['number'].label = "Credid Card Number"
+        self.fields['cvc'].label = "CVC"
+        self.fields['exp_month'].label = "Expiration Month (2 Digits)"
+        self.fields['exp_year'].label = "Expiration Year (2 Digits)"
+
 class StripeTokenForm(forms.ModelForm):
 
     class Meta:
