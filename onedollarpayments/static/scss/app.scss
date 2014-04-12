@@ -6,11 +6,57 @@
 @import "foundation/components/button-groups";
 @import "foundation/components/buttons";
 
+body {
+	background: #E7F7E9; 
+}
+
 #footer {
 	margin-top: 50px; 
 	margin-bottom: 20px; 
 }
 
+h2 {
+	font-weight: 200; 
+	text-transform: uppercase; 
+	color: #368a54; 
+	letter-spacing: 0.1em;
+}
+
+#header {
+	text-align: center;
+	margin-top: 30px;  
+	margin-bottom: 15px; 
+	.columns {
+		border-bottom: solid 1px rgba(162, 196, 166, 0.5);
+	}
+}
+
+h1 {
+	font-weight: bold;
+	text-align: center; 
+}
+
+#footer {
+	p {
+		font-size: 0.8em; 
+		text-align: center;
+	}
+}
+
+.button {
+	border-radius: $global-radius;
+}
+
+label {
+	font-size: 0.675rem;
+	font-weight: bold;
+	letter-spacing: 0.1em;
+}
+
+.label.secondary {
+	border: solid 1px rgba(50,50,50,.2); 
+	border-radius: 3px; 
+}
 
 // Or selectively include components
 // @import
