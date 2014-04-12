@@ -31,6 +31,11 @@ h2 {
 	}
 }
 
+table {
+	width: 100%; 
+	border-collapse: collapse;
+}
+
 tr {
 	.even {
 		background-color: rgba(162, 196, 166, 0.5);
