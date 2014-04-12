@@ -5,16 +5,19 @@ from datetime import datetime
 class StripeToken(models.Model):
 
     stripe_id = models.CharField(
-        max_length=255
+        max_length=255,
+        blank=True, 
+        null=True,
     )
 
     livemode = models.BooleanField(
-        default=False
+        default=False,
     )
 
     created = models.IntegerField(
         default=None,
-        blank=True,
+        blank=True, 
+        null=True,
     )
 
     used = models.BooleanField(
@@ -30,7 +33,7 @@ class Recepient(models.Model):
 
     email = models.EmailField()
 
-    stripe_token = models.ForeignKey('StripeToken')
+    stripe_token = models.ForeignKey('StripeToken', null=True, blank=True)
 
 class Sender(models.Model):
 
@@ -67,5 +70,5 @@ class Request(models.Model):
     )
 
     paid = models.BooleanField(
-        default=None
+        default=False,
     )
