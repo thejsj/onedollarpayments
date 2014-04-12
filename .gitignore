@@ -62,4 +62,4 @@ docs/_build/
 
 # PROJECT SPECIFIC
 onedollarpayments/local_settings.py
-
+fabfile.py
