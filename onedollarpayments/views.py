@@ -46,7 +46,7 @@ def home(request):
             # Send Email To Recepient
             send_mail(
                 'Money Request Received', 
-                '%s has send you money request for $%s\n\nVisit the following link in order to make this payment:\n\nhttp://1dollarpayments.thejsj.com/%s' % (
+                '%s has send you money request for $%s\n\nVisit the following link in order to make this payment:\n\nhttp://1dollarpayments.thejsj.com%s' % (
                     request_form.recepient, 
                     request_form.quantity, 
                     
