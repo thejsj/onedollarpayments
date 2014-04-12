@@ -5,9 +5,22 @@
 {% block content %}
 	<div class="row">
 		<div class="large-6 large-centered columns">
-			<h1>Pay Up!</h1>
-			<p>Order #: {{ payment_request.id }}</p>
-			<p>{{ payment_request.sender.email }} is asking for {{ payment_request.quantity }}</p>
+			<h1>It's Time To Pay!</h1>
+			<table>
+				<tr>
+					<td>Order Number:</td>
+					<td>{{ payment_request.id }}</td>
+				</tr>
+				<tr class="even">
+					<td>Sender Email:</td>
+					<td>{{ payment_request.sender.email }}</td>
+				</tr>
+				<tr>
+					<td>Amount:</td>
+					<td>{{ payment_request.quantity }}</td>
+				</tr>
+			</table>
+		
 			<p>Enter your credit card information in order to complete payment</p>
 
 			<form id="main-payment-request-form" action="{% url 'recepient_pay_request' payment_request_hash=payment_request.id %}" method="post">
@@ -15,7 +28,7 @@
 				{{ recepient_form }}
 				<br>
 				{{ stripe_token_form }}
-				<p><small>Test Credentials: 4242424242424242</small></p>
+				<p><span class="label secondary">Test Credentials: 4242424242424242</span></p>
 				<input type="hidden" value="{{ payment_request.id }}">
 				<input type="submit" class="button expand success" value="Submit" />
 			</form>
